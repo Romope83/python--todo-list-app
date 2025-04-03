@@ -1,7 +1,7 @@
 import tkinter as tk
 
-import TelaPrincipal
-import TelaLogin
+from tela_principal import TelaPrincipal
+from tela_login import TelaLogin
 
 class GerenciadorTelas:
     def __init__(self):
