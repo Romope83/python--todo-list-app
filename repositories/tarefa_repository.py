@@ -2,16 +2,16 @@ import json
 from models.tarefa import Tarefa
 
 class TarefaRepository:
-    FILE_PATH = "tarefas.json"
+    CAMINHO_ARQUIVO = "tarefas.json"
 
-    def save(self, tarefas):
-        with open(self.FILE_PATH, "w") as f:
-            json.dump([tarefa.to_dict() for tarefa in tarefas], f)
+    def salvar(self, tarefas):
+        with open(self.CAMINHO_ARQUIVO, "w") as f:
+            json.dump([tarefa.para_dicionario() for tarefa in tarefas], f)
 
-    def load(self):
+    def carregar(self):
         try:
-            with open(self.FILE_PATH, "r") as f:
+            with open(self.CAMINHO_ARQUIVO, "r") as f:
                 data = json.load(f)
-                return [Tarefa.from_dict(item) for item in data]
+                return [Tarefa.do_dicionario(item) for item in data]
         except (FileNotFoundError, json.JSONDecodeError):
             return []
